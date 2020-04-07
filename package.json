@@ -1,0 +1,12 @@
+{
+  "name": "Node.js",
+  "version": "1.0.0",
+  "description": "多进程爬虫",
+  "scripts": {
+    "start": "node src/master.js"
+  },
+  "author": "怪怪",
+  "dependencies": {
+    "superagent": "^3.5.2"
+  }
+}
