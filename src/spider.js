@@ -16,17 +16,13 @@ module.exports = (pageStart) => {
             .accept('application/json')
             .end((err, res) => {
                 if (err) reject(err);
-
-                // 加唯一id，保证多线程爬取数据的先后顺序可以确定
-                let resObj = JSON.parse(res.text);
-                resObj.subjects.forEach((item, index) => {
-                    resObj.subjects[index].movieIndex = pageStart + index;
-                });
-
-                // 结果输出
-                // console.log(resObj);
-
-                resolve();
+                try {
+                    let { subjects } = JSON.parse(res.text);
+                    resolve(subjects);
+                } catch (error) {
+                    console.log(error);
+                    resolve({});
+                }
             })
     });
 };
